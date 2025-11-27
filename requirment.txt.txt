@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+google-generativeai
+python-dotenv
+SpeechRecognition
+pydub
+gtts
+streamlit
+requests
