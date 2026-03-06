@@ -3,16 +3,18 @@ REM Activate venv
 echo Activating virtual environment...
 call venv\Scripts\activate.bat
 
-REM Start backend in new window
-echo Starting Backend...
-start cmd /k "cd Backend && uvicorn app:app --reload"
+echo Installing latest FastAPI and Uvicorn...
+pip install fastapi uvicorn python-multipart gtts SpeechRecognition pyaudio
 
-REM Wait 3 seconds before starting frontend
+REM Start backend and serve frontend
+echo Starting Backend...
+cd Backend
+start /b uvicorn app:app --reload
+
+REM Wait 3 seconds for it to boot
 timeout /t 3
 
-REM Start frontend in new window
-echo Starting Frontend...
-start cmd /k "cd frontend && streamlit run streamlit_app.py"
-
+echo Opening browser...
+start http://127.0.0.1:8000/
 echo All processes started!
 pause
